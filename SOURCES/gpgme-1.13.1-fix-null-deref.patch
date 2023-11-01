@@ -1,0 +1,26 @@
+diff --git a/src/data-mem.c b/src/data-mem.c
+index 539b453..ae16bab 100644
+--- a/src/data-mem.c
++++ b/src/data-mem.c
+@@ -271,7 +271,7 @@ gpgme_data_release_and_get_mem (gpgme_data_t dh, size_t *r_len)
+     }
+   else
+     {
+-      if (blankout && len)
++      if (str && blankout && len)
+         *str = 0;
+       /* Prevent mem_release from releasing the buffer memory.  We
+        * must not fail from this point.  */
+diff --git a/src/vfs-create.c b/src/vfs-create.c
+index 51b8307..445cd05 100644
+--- a/src/vfs-create.c
++++ b/src/vfs-create.c
+@@ -130,7 +130,7 @@ _gpgme_op_vfs_create (gpgme_ctx_t ctx, gpgme_key_t recp[],
+     return err;
+ 
+   i = 0;
+-  while (!err && recp[i])
++  while (!err && recp && recp[i])
+     {
+       if (!recp[i]->subkeys || !recp[i]->subkeys->fpr)
+ 	{
