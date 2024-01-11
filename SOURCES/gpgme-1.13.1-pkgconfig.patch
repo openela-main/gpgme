@@ -1,0 +1,31 @@
+diff --git a/src/gpgme-glib.pc.in b/src/gpgme-glib.pc.in
+index bd42a31..781a463 100644
+--- a/src/gpgme-glib.pc.in
++++ b/src/gpgme-glib.pc.in
+@@ -7,8 +7,8 @@ api_version=@GPGME_CONFIG_API_VERSION@
+ 
+ Name: gpgme-glib
+ Description: GnuPG Made Easy to access GnuPG with Glib
+-Requires: gpg-error, libassuan, glib-2.0
++Requires: glib-2.0
+ Version: @PACKAGE_VERSION@
+-Cflags: @GPGME_CONFIG_CFLAGS@
+-Libs: @GPGME_CONFIG_LIBS@
++Cflags: @GPGME_CONFIG_CFLAGS@ -I/usr/include/libassuan2
++Libs: @GPGME_CONFIG_LIBS@ -lgpg-error -lassuan
+ URL: https://www.gnupg.org/software/gpgme/index.html
+diff --git a/src/gpgme.pc.in b/src/gpgme.pc.in
+index be288b8..a71bcf7 100644
+--- a/src/gpgme.pc.in
++++ b/src/gpgme.pc.in
+@@ -7,8 +7,7 @@ api_version=@GPGME_CONFIG_API_VERSION@
+ 
+ Name: gpgme
+ Description: GnuPG Made Easy to access GnuPG
+-Requires: gpg-error, libassuan
+ Version: @PACKAGE_VERSION@
+-Cflags: @GPGME_CONFIG_CFLAGS@
+-Libs: @GPGME_CONFIG_LIBS@
++Cflags: @GPGME_CONFIG_CFLAGS@ -I/usr/include/libassuan2
++Libs: @GPGME_CONFIG_LIBS@ -lgpg-error -lassuan
+ URL: https://www.gnupg.org/software/gpgme/index.html
